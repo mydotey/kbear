@@ -3,18 +3,13 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ctrip.framework.kbear</groupId>
+    <groupId>org.mydotey.kbear</groupId>
     <artifactId>kbear-parent</artifactId>
-    <version>1.0.3</version>
+    <version>1.1.0</version>
     <packaging>pom</packaging>
     <name>kbear-parent</name>
-    <description>Ctrip KBear Kafka Multi-cluster Solution</description>
-    <url>https://ctripcorp.github.io/kbear</url>
-
-    <organization>
-        <name>Ctrip, Inc.</name>
-        <url>http://www.ctrip.com</url>
-    </organization>
+    <description>KBear Kafka Enterprise Solution</description>
+    <url>https://github.com/mydotey/kbear</url>
 
     <licenses>
         <license>
@@ -24,14 +19,14 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/ctripcorp/kbear</url>
-        <connection>scm:git:git://github.com/ctripcorp/kbear.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/ctripcorp/kbear.git</developerConnection>
+        <url>https://github.com/mydotey/kbear</url>
+        <connection>scm:git:git://github.com/mydotey/kbear.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/mydotey/kbear.git</developerConnection>
     </scm>
 
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/ctripcorp/kbear/issues</url>
+        <url>https://github.com/mydotey/kbear/issues</url>
     </issueManagement>
 
     <developers>
@@ -39,8 +34,6 @@
             <id>koqizhao</id>
             <name>Qiang Zhao</name>
             <email>koqizhao@outlook.com</email>
-            <organization>Ctrip, Inc.</organization>
-            <organizationUrl>http://www.ctrip.com</organizationUrl>
             <roles>
                 <role>Developer</role>
             </roles>
@@ -73,43 +66,39 @@
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
         <maven-bundle-plugin.version>4.1.0</maven-bundle-plugin.version>
         <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
+        <maven-doc-plugin.version>3.0.0</maven-doc-plugin.version>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <nexus-staging-plugin.version>1.6.7</nexus-staging-plugin.version>
         <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
         <protoc-executable-path>${project.basedir}/../../tools/protoc/bin/protoc</protoc-executable-path>
     </properties>
 
     <modules>
-        <module>meta-service</module>
+        <module>kbear-meta</module>
         <module>kbear-client</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.ctrip.framework.kbear</groupId>
-                <artifactId>meta-service</artifactId>
+                <groupId>org.mydotey.kbear</groupId>
+                <artifactId>kbear-meta</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.ctrip.framework.kbear</groupId>
-                <artifactId>meta-service</artifactId>
-                <version>${project.version}</version>
-                <type>test-jar</type>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.ctrip.framework.kbear</groupId>
-                <artifactId>kbear-client</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ctrip.framework.kbear</groupId>
-                <artifactId>kbear-client</artifactId>
+                <groupId>org.mydotey.kbear</groupId>
+                <artifactId>kbear-meta</artifactId>
                 <version>${project.version}</version>
                 <type>test-jar</type>
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>com.ctrip.framework.kbear</groupId>
+                <groupId>org.mydotey.kbear</groupId>
+                <artifactId>kbear-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mydotey.kbear</groupId>
                 <artifactId>kbear-client</artifactId>
                 <version>${project.version}</version>
                 <type>test-jar</type>
@@ -260,18 +249,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven-jar-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>${maven-source-plugin.version}</version>
                 <configuration>
@@ -287,12 +264,73 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-doc-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.felix</groupId>  
                 <artifactId>maven-bundle-plugin</artifactId>  
                 <version>${maven-bundle-plugin.version}</version>
                 <extensions>true</extensions>  
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven-gpg-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>${nexus-staging-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
