@@ -1,5 +1,19 @@
 # KBear Client
 
+目录
+
+- [概述](#%E6%A6%82%E8%BF%B0)
+- [POM 依赖](#pom-%E4%BE%9D%E8%B5%96)
+- [用法](#%E7%94%A8%E6%B3%95)
+  - [创建 Producer](#%E5%88%9B%E5%BB%BA-producer)
+  - [创建 Consumer](#%E5%88%9B%E5%BB%BA-consumer)
+  - [不支持的api](#%E4%B8%8D%E6%94%AF%E6%8C%81%E7%9A%84api)
+  - [特殊场景](#%E7%89%B9%E6%AE%8A%E5%9C%BA%E6%99%AF)
+- [配置](#%E9%85%8D%E7%BD%AE)
+- [监控](#%E7%9B%91%E6%8E%A7)
+  - [cat监控](#cat%E7%9B%91%E6%8E%A7)
+  - [Metrics Dashboard监控](#metrics-dashboard%E7%9B%91%E6%8E%A7)
+
 ## 概述
 
 kbear-client集成了KBear kafka meta service，自动对producer、consumer 进行kafka 集群寻址（即不需要用户自己配置bootstrap.servers）。同时对接了CAT、Metrics监控，把kafka运行时数据暴露到CAT、Metrics Dashboard。

@@ -1,5 +1,11 @@
 # Kafka Cluster Deployment
 
+目录
+
+- [Machine Configuration](#machine-configuration)
+- [Machine Init](#machine-init)
+- [Deploy Kafka](#deploy-kafka)
+
 ## Machine Configuration
 
 CPU：32Threads, @2.1GHz
