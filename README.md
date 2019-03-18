@@ -14,7 +14,7 @@ Features
   - topic monitoring
   - consumer group monitoring
 
-deploy & usage
+Deploy & Usage
 
 [Cluster Deploy](doc/usage-deploy.md)
 
