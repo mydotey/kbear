@@ -32,7 +32,7 @@
 
 有5个dashboard，在目录 [kafka-dashboards](../tools/kafka/monitoring/grafana/kafka-dashboards/1.0) 下。
 
-## Kafka Meta
+## Multi-Cluster
 
 ### CRRL (Cluster Route Rule Language)
 
@@ -43,14 +43,14 @@
 - consumer-groups.yaml
 - route-rules.yaml
 
-### KBear Meta 元数据服务
+### KBear Meta Service
 
-项目：
+项目：[kbear-meta](../java/kbear-meta)
 
-- [kbear-meta](../java/kbear-meta)
+使用说明：[kbear meta service](kbear-meta-service.md)
 
-### KBear Meta Client
+### KBear Client
 
-项目：
+项目：[kbear-client](../java/kbear-client)
 
-- [kbear-client](../java/kbear-client)
+使用说明：[kbear client](kbear-client.md)

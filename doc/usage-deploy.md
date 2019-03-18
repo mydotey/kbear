@@ -28,4 +28,3 @@ sudo权限执行，执行后reboot。注意具体机器配置可能不同，可�
 
 - kafka-env.sh
 - server.properties
-- ctrip-cp/META-INF/app.properties
