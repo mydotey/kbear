@@ -14,6 +14,16 @@ Features
   - topic monitoring
   - consumer group monitoring
 
+deploy & usage
+
+[Cluster Deploy](doc/usage-deploy.md)
+
+[KBear Solution](doc/usage-kbear.md)
+
+Production Case
+
+[携程Kafka 2.0升级实战](doc/2.0-upgrade-and-multi-cluster.md)
+
 Developers
 
 - Qiang Zhao <koqizhao@outllook.com>
